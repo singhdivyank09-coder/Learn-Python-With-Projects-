@@ -13,40 +13,8 @@ Each project folder contains a clear problem statement, the solution code, and n
 ```
 learn-python-with-projects/
 │
-├── 01_basics/
-│   ├── hello_world.py
-│   └── notes.md
+│  
 │
-├── 02_control_flow/
-│   ├── number_guessing_game/
-│   └── notes.md
-│
-├── 03_functions/
-│   ├── calculator/
-│   └── notes.md
-│
-├── 04_data_structures/
-│   ├── todo_list/
-│   └── notes.md
-│
-├── 05_file_handling/
-│   ├── expense_tracker/
-│   └── notes.md
-│
-├── 06_oop/
-│   ├── bank_account_simulator/
-│   └── notes.md
-│
-├── 07_apis/
-│   ├── weather_app/
-│   └── notes.md
-│
-├── 08_mini_projects/
-│   ├── web_scraper/
-│   ├── quiz_app/
-│   └── notes.md
-│
-└── README.md
 ```
 
 ---
