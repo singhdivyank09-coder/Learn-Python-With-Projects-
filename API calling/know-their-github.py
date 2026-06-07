@@ -10,6 +10,8 @@ def check_github(user):  #creating function accessing basic information of user 
     print('FOLLOWERS:',data['followers'])
     print('PROFILE LINK:',data['html_url'])
 
+    #You can access more basic information using GitHub API 
+
 
 
 if __name__=='__main__':
