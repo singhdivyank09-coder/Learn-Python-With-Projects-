@@ -1,0 +1,59 @@
+import requests
+
+def get_definition(word):
+    url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
+    response = requests.get(url)
+
+    if response.status_code == 404:
+        print(f"\n  No definition found for '{word}'.")
+        return
+
+    if response.status_code != 200:
+        print(f"\n  Error: {response.status_code}")
+        return
+
+    data = response.json()[0]  # first result
+
+    word      = data.get("word", "N/A")
+    phonetic  = data.get("phonetic", "N/A")
+    meanings  = data.get("meanings", [])
+
+    print("\n" + "=" * 40)
+    print(f"  Word     : {word}")
+    print(f"  Phonetic : {phonetic}")
+    print("=" * 40)
+
+    for meaning in meanings:
+        part_of_speech = meaning.get("partOfSpeech", "N/A")
+        definitions    = meaning.get("definitions", [])
+
+        print(f"\n  [{part_of_speech}]")
+
+        for i, defn in enumerate(definitions[:3], start=1):  # show max 3 definitions
+            definition = defn.get("definition", "N/A")
+            example    = defn.get("example", None)
+
+            print(f"  {i}. {definition}")
+            if example:
+                print(f"     Example: {example}")
+
+    print()
+
+
+def main():
+    while True:
+        word = input("Enter a word (or 'quit' to exit): ").strip().lower()
+
+        if word == "quit":
+            print("Goodbye!")
+            break
+
+        if not word:
+            print("Please enter a word.")
+            continue
+
+        get_definition(word)
+
+
+if __name__ == "__main__":
+    main()
