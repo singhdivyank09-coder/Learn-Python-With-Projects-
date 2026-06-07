@@ -1,9 +1,16 @@
 import requests #this module helps to access urls
+import urllib3 #to disable SSL certificate verification warnings
+
+# Disable SSL verification warnings to keep output clean
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def get_weather(city): #creating function to access weather information using wttr.in API
     # format=j1 specifies that we want the response in JSON format
     url = f"https://wttr.in/{city}?format=j1"
-    response = requests.get(url)
+    
+    # We add verify=False to bypass SSL errors on local setups
+    response = requests.get(url, verify=False)
+
     
     # Check if the HTTP request was successful
     if response.status_code != 200:
